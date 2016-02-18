@@ -26,6 +26,10 @@ int main(int argc, char* argv[]) {
         op = igl::copyleft::boolean::MeshBooleanType::MESH_BOOLEAN_TYPE_INTERSECT;
     } else if (strcmp(argv[1], "difference") == 0) {
         op = igl::copyleft::boolean::MeshBooleanType::MESH_BOOLEAN_TYPE_MINUS;
+    } else if (strcmp(argv[1], "xor") == 0) {
+        op = igl::copyleft::boolean::MeshBooleanType::MESH_BOOLEAN_TYPE_XOR;
+    } else {
+        throw "Operation not supported";
     }
 
     timeval start, end;
