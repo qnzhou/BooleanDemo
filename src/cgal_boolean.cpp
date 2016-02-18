@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     fin2.close();
 
     Nef_polyhedron nef1(mesh1);
-    Nef_polyhedron nef2(mesh1);
+    Nef_polyhedron nef2(mesh2);
     Nef_polyhedron out;
 
     timeval start, end;
@@ -43,6 +43,10 @@ int main(int argc, char* argv[]) {
         out = nef1 * nef2;
     } else if (strcmp(argv[1], "difference") == 0) {
         out = nef1 - nef2;
+    } else if (strcmp(argv[1], "xor") == 0) {
+        out = nef1 ^ nef2;
+    } else {
+        throw "Operation not supported";
     }
 
     gettimeofday(&end, NULL); 
