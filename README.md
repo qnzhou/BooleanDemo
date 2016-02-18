@@ -1,5 +1,4 @@
-About
-=====
+###About###
 
 This repository contains minimalistic demos of various mesh boolean libraries.
 
@@ -12,5 +11,21 @@ The libraries supported are:
 * CGAL - Nef Polyhedron
 * libigl
 
-Qingnan (James) Zhou
+###Build###
+
+    mkdir build
+    cd build
+    cmake ..
+    make
+
+###Useage###
+
+All demos have the same command line interface:
+
+    ./[library]_boolean [op] mesh1.off mesh2.off result.off
+
+where `[library]` is either `libigl` or `cgal`,  and `[op]` could be any of
+`union`, `intersection`, `difference`.
+
+Qingnan (James) Zhou<br>
 New York University
