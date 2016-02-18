@@ -25,7 +25,7 @@ All demos have the same command line interface:
     ./[library]_boolean [op] mesh1.off mesh2.off result.off
 
 where `[library]` is either `libigl` or `cgal`,  and `[op]` could be any of
-`union`, `intersection`, `difference`.
+`union`, `intersection`, `difference` or `xor`.
 
 Qingnan (James) Zhou<br>
 New York University
