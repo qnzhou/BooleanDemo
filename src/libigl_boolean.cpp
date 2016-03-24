@@ -2,8 +2,8 @@
 #include <Eigen/Core>
 #include <igl/read_triangle_mesh.h>
 #include <igl/write_triangle_mesh.h>
-#include <igl/copyleft/boolean/mesh_boolean.h>
-#include <igl/copyleft/boolean/MeshBooleanType.h>
+#include <igl/copyleft/cgal/mesh_boolean.h>
+#include <igl/MeshBooleanType.h>
 #include <sys/time.h>
 
 int main(int argc, char* argv[]) {
@@ -19,15 +19,15 @@ int main(int argc, char* argv[]) {
     igl::read_triangle_mesh(argv[2], V1, F1);
     igl::read_triangle_mesh(argv[3], V2, F2);
 
-    igl::copyleft::boolean::MeshBooleanType op;
+    igl::MeshBooleanType op;
     if (strcmp(argv[1], "union") == 0) {
-        op = igl::copyleft::boolean::MeshBooleanType::MESH_BOOLEAN_TYPE_UNION;
+        op = igl::MeshBooleanType::MESH_BOOLEAN_TYPE_UNION;
     } else if (strcmp(argv[1], "intersection") == 0) {
-        op = igl::copyleft::boolean::MeshBooleanType::MESH_BOOLEAN_TYPE_INTERSECT;
+        op = igl::MeshBooleanType::MESH_BOOLEAN_TYPE_INTERSECT;
     } else if (strcmp(argv[1], "difference") == 0) {
-        op = igl::copyleft::boolean::MeshBooleanType::MESH_BOOLEAN_TYPE_MINUS;
+        op = igl::MeshBooleanType::MESH_BOOLEAN_TYPE_MINUS;
     } else if (strcmp(argv[1], "xor") == 0) {
-        op = igl::copyleft::boolean::MeshBooleanType::MESH_BOOLEAN_TYPE_XOR;
+        op = igl::MeshBooleanType::MESH_BOOLEAN_TYPE_XOR;
     } else {
         throw "Operation not supported";
     }
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
     timeval start, end;
     gettimeofday(&start, NULL); 
 
-    igl::copyleft::boolean::mesh_boolean(V1, F1, V2, F2, op, V_out, F_out);
+    igl::copyleft::cgal::mesh_boolean(V1, F1, V2, F2, op, V_out, F_out);
 
     gettimeofday(&end, NULL); 
     std::cout << "duration: " << 
